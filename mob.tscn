@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhhkkcrt0517h"]
+
+[ext_resource type="Script" path="res://Mob.cs" id="1_5takh"]
+[ext_resource type="Texture2D" uid="uid://ctf2i2dhgg85x" path="res://art/enemyFlyingAlt_1.png" id="1_dunw3"]
+[ext_resource type="Texture2D" uid="uid://dlpuj2tppi5gl" path="res://art/enemyFlyingAlt_2.png" id="2_g0hg2"]
+[ext_resource type="Texture2D" uid="uid://blx6p6lem2wd" path="res://art/enemySwimming_1.png" id="3_4tu8b"]
+[ext_resource type="Texture2D" uid="uid://klcthaegghx3" path="res://art/enemySwimming_2.png" id="4_qw7hp"]
+[ext_resource type="Texture2D" uid="uid://bp522cmns5tkc" path="res://art/enemyWalking_1.png" id="5_op0k6"]
+[ext_resource type="Texture2D" uid="uid://cbe6y8wat1t1a" path="res://art/enemyWalking_2.png" id="6_rj70x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03x4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dunw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g0hg2")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4tu8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qw7hp")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_op0k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rj70x")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssiiy"]
+radius = 36.0
+height = 102.0
+
+[node name="Mob" type="RigidBody2D" groups=["Mobs"]]
+collision_mask = 0
+gravity_scale = 2.66454e-15
+script = ExtResource("1_5takh")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_03x4x")
+animation = &"walk"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ssiiy")
