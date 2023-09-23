@@ -16,8 +16,8 @@ public partial class Main : Node {
 	public override void _Ready() {
 		_player = GetNode<Player>("Player");
 		_startTimer = GetNode<Timer>("StartTimer");
-		_mobTimer = GetNode<Timer>("ScoreTimer");
-		_scoreTimer = GetNode<Timer>("MobTimer");
+		_mobTimer = GetNode<Timer>("MobTimer");
+		_scoreTimer = GetNode<Timer>("ScoreTimer");
 		_hud = GetNode<HUD>("HUD");
 		
 		_player.Hit += GameOver;
